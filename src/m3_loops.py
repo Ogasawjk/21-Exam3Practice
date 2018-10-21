@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  FOR and WHILE loops.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and JUSTIN OGASAWARA.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -31,7 +31,6 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
 import simple_testing as st
 import math
 
-
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_practice_problem3()
@@ -40,7 +39,6 @@ def main():
 # Students: Some of the testing code below uses SimpleTestCase objects,
 #           from the imported   simple_testing (st)   module.
 # ----------------------------------------------------------------------
-
 
 def run_test_practice_problem3():
     """ Tests the   practice_problem3  function. """
@@ -109,7 +107,14 @@ def run_test_practice_problem3():
              st.SimpleTestCase(practice_problem3,
                                [0, 1, 1.414213562373],
                                [286602]),
+             st.SimpleTestCase(practice_problem3,
+                               [0, 1, 1.414213562373],
+                               [286602]),
+             st.SimpleTestCase(practice_problem3,
+                               [0, 1, 1.414213562373],
+                               [286602]),
              ]
+
     # 14th test:
     big_list = []
     for k in range(888, 1888):
@@ -207,8 +212,16 @@ def practice_problem3(start, n, threshold):
       :type n:     int
       :type threshold: float
     """
+    counter = 0
+    my_list = []
+    while counter != n:
+        if math.sin(start) + math.cos(start) >= threshold:
+            my_list = my_list + [start]
+            counter = counter + 1
+        start = start + 1
+    return my_list
     ####################################################################
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Some tests are already written for you (above),
     #          but you are required to write ADDITIONAL tests (above).
     ####################################################################
