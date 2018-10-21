@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  SEQUENCES.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and JUSTIN OGASAWARA.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -35,9 +35,9 @@ import rosegraphics as rg
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_practice_problem4a()
-    run_test_practice_problem4b()
-    run_test_practice_problem4c()
+    #run_test_practice_problem4a()
+    #run_test_practice_problem4b()
+    #run_test_practice_problem4c()
     run_test_practice_problem4d()
 
 
@@ -71,7 +71,6 @@ def is_prime(n):
     #
     # Instead, ** CALL ** this function as needed in the problems below.
     # ------------------------------------------------------------------
-
 
 # ----------------------------------------------------------------------
 # Students: Some of the testing code below uses SimpleTestCase objects,
@@ -107,8 +106,12 @@ def run_test_practice_problem4a():
     # Run the 4 tests in the   tests   list constructed above.
     st.SimpleTestCase.run_tests('practice_problem4a', tests)
 
-
 def practice_problem4a(sequence):
+    my_list = []
+    for k in range(len(sequence)-1):
+        if sequence[k] == sequence[k+1]:
+            my_list = my_list + [k]
+    return my_list
     """
     What comes in: A non-empty sequence.
     What goes out: Returns a list of integers,
@@ -134,15 +137,13 @@ def practice_problem4a(sequence):
       :type sequence: list | tuple | string
     """
     ####################################################################
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 minutes.
     ####################################################################
-
-
 def run_test_practice_problem4b():
     """ Tests the    practice_problem4b    function. """
     # ------------------------------------------------------------------
@@ -178,7 +179,6 @@ def run_test_practice_problem4b():
     # ------------------------------------------------------------------
     st.SimpleTestCase.run_tests('practice_problem4b', tests)
 
-
 def practice_problem4b(sequence):
     """
     What comes in:
@@ -196,16 +196,19 @@ def practice_problem4b(sequence):
     Type hints:
       :type sequence: (list | tuple) of (float | int)
     """
+    largest = sequence[0]
+    for k in range(0,len(sequence),2):
+        if sequence[k] > largest:
+            largest = sequence[k]
+    return largest
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   10 minutes.
     ####################################################################
-
-
 def run_test_practice_problem4c():
     """ Tests the    practice_problem4c    function. """
     # ------------------------------------------------------------------
@@ -263,7 +266,6 @@ def run_test_practice_problem4c():
         print('  *** SEE YOUR INSTRUCTOR for an important explanation!')
         print()
 
-
 def practice_problem4c(points):
     """
     What comes in:  A tuple of rg.Points, each of whose coordinates
@@ -294,8 +296,15 @@ def practice_problem4c(points):
       :type points: tuple of rg.Point
       :rtype: rg.Point | string
     """
+    for k in range(len(points)):
+        if is_prime(points[k].x) and is_prime(points[k].y):
+            y2 = points[k].x
+            points[k].x = points[k].y
+            points[k].y = y2
+            return points[k]
+    return 'Not found'
     ####################################################################
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     # IMPORTANT: This problem is your LOWEST PRIORITY for preparing
@@ -306,8 +315,6 @@ def practice_problem4c(points):
     #    DIFFICULTY:      9
     #    TIME ESTIMATE:   15 minutes.
     ####################################################################
-
-
 def run_test_practice_problem4d():
     """ Tests the    practice_problem4d    function. """
     # ------------------------------------------------------------------
@@ -340,8 +347,12 @@ def run_test_practice_problem4d():
     # Run the 5 tests in the   tests   list constructed above.
     st.SimpleTestCase.run_tests('practice_problem4d', tests)
 
-
 def practice_problem4d(sequence):
+    sum = 0;
+    for ind in range(len(sequence) - 1):
+        if is_prime(sequence[ind]) and is_prime(sequence[ind + 1]) and sequence[ind] != sequence[ind + 1]:
+            sum = sum + sequence[ind]
+    return sum;
     """
     What comes in: A non-empty sequence of integers.
     What goes out: An integer that is the sum of all the items
@@ -391,7 +402,7 @@ def practice_problem4d(sequence):
       :rtype: int
     """
     ####################################################################
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
