@@ -8,11 +8,9 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
          their colleagues and JUSTIN OGASAWARA.
 """  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
-
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_zero_changer()
-
 
 def run_test_zero_changer():
     """ Tests the    zero_changer    function. """
@@ -29,14 +27,33 @@ def run_test_zero_changer():
     print('Test 1:')
     print('  Expected:', expected1)
     print('  Actual:  ', test1)
-
     # ------------------------------------------------------------------
-    # TODO: 2. Write at least 2 additional tests for the  zero_changer   function.
+    # DONE: 2. Write at least 2 additional tests for the  zero_changer   function.
     #   Try do do some unexpected things like empty lists or an empty tuple.
     # ------------------------------------------------------------------
+    test2 = ([ ], [ ], [ ], [ ])
+    expected2 = ([ ], [ ], [ ], [ ])
+    zero_changer(test2)
+    print()
+    print('Test 2:')
+    print('  Expected:', expected2)
+    print('  Actual:  ', test2)
 
+    test3 = ( )
+    expected3 = ( )
+    zero_changer(test3)
+    print()
+    print('Test 3:')
+    print('  Expected:', expected3)
+    print('  Actual:  ', test3)
 
 def zero_changer(tuple_of_lists):
+    a = 1
+    for k in range(len(tuple_of_lists)):
+        for j in range(len(tuple_of_lists[k])):
+            if tuple_of_lists[k][j] == 0:
+                tuple_of_lists[k][j] = a
+                a = a + 1
     """
     What comes in:  A TUPLE of LISTs,
                     where the interior lists contain only integers.
@@ -61,7 +78,7 @@ def zero_changer(tuple_of_lists):
       :type tuple_of_lists: tuple of list[int]
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -69,8 +86,6 @@ def zero_changer(tuple_of_lists):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:  10 minutes.
     # ------------------------------------------------------------------
-
-
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
