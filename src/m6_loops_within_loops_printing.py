@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  LOOPS WITHIN LOOPS in PRINTING-TO-CONSOLE problems.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and JUSTIN OGASAWARA.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -28,11 +28,9 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
 #    on it, in class or via Piazza.
 ########################################################################
 
-
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_shape()
-
 
 def run_test_shape():
     """ Tests the    shape    function. """
@@ -53,8 +51,19 @@ def run_test_shape():
     print('Test 3 of shape: r=2')
     shape(2)
 
-
 def shape(r):
+    space = ' '
+    for k in range(r):
+        for j in range(k):
+            print(space, end='')
+        for m in range(r-k):
+                print('+', end='')
+        print('!', end='')
+        for l in range(r-k):
+            print(r-l-k, end='')
+        for n in range(k):
+            print('-', end='')
+        print()
     """
     Prints a shape with r rows that looks like this example where r=7:
     +++++++!7654321
@@ -75,7 +84,7 @@ def shape(r):
     For purposes of "lining up", assume r is a single digit.
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     ####################################################################
