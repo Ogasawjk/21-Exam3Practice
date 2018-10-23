@@ -32,7 +32,7 @@ import rosegraphics as rg
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    #run_test_hourglass()
+    # run_test_hourglass()
     run_test_many_hourglasses()
 
 def run_test_hourglass():
@@ -70,7 +70,7 @@ def hourglass(window, n, point, radius, color):
             my_line = rg.Line(rg.Point(my_circle.center.x - radius, my_circle.center.y), rg.Point(my_circle.center.x + radius, my_circle.center.y))
             my_circle.attach_to(window)
             my_line.attach_to(window)
-            window.render()
+            #window.render()
         center = rg.Point(point.x - k*radius, point.y - k*radius*math.sqrt(3))
     for l in range(n+1):
         for m in range(l):
@@ -151,12 +151,36 @@ def run_test_many_hourglasses():
 
     window2.close_on_mouse_click()
 
+def addborder(window, rectangle):
+    rectangle.attach_to(window)
+
+
 def many_hourglasses(window, square, m, colors):
-    a = len(colors)
-    for k in range(m):
-        if k < a:
-            hourglass(window, k+1, square.center, square.length_of_each_side, colors[k])
-        square.center = rg.Point(square.center.x + ((2*(k+1)+1)*square.length_of_each_side), square.center.y)
+    color_k = 0
+    length = square.length_of_each_side
+
+    point1 = rg.Point(square.center.x - length/2, square.center.y - length/2)
+    point2 = rg.Point(square.center.x + length/2, square.center.y + length/2)
+    rect = rg.Rectangle(point1, point2)
+
+    hourglass(window, 1, square.center, length/2, colors[0])
+    addborder(window, rect)
+    point1 = rg.Point(point1.x + length, point1.y - length)
+    point2 = rg.Point(point2.x + (2 * length), point2.y + length)
+    rect = rg.Rectangle(point1, point2)
+
+    hourglass(window, 2, square.center, length / 2, colors[1])
+    addborder(window, rect)
+    #for k in range(2, m):
+    #    color_k = color_k % len(colors)
+    #    hourglass(window, k, rg.Point(point1.x + (k/2 * length), point1.y + (2*k-1)/2*length), length/2,colors[color_k])
+    #    addborder(window, rect)
+    #    rect.corner_1.x = rect.corner_1.x + (k * length)
+    #    rect.corner_1.y = rect.corner_1.y - length
+    #    rect.corner_2.x = rect.corner_2.x + (k * length)
+    #    rect.corner_2.y = rect.corner_2.y + length
+    #    color_k = color_k + 1
+
     """
     See   many_hourglasses_picture.pdf   in this project for pictures that may
     help you better understand the following specification:
